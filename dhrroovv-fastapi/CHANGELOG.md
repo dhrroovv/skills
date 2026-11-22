@@ -1,0 +1,2 @@
+- 2026-11-22: Moved config.py, db.py, deps.py into app/core/.
+- 2026-11-22: Added Layers section (routers, single service layer); made the dhrroovv-python dependency explicit; this skill wins on conflicts.

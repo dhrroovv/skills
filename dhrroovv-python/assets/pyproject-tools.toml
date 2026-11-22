@@ -1,0 +1,11 @@
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+# ANN enforces parameter and return type hints; UP enforces modern syntax (X | None, PEP 695)
+select = ["F", "E4", "E7", "E9", "I", "N", "UP", "B", "SIM", "ANN", "RUF"]
+
+[tool.pyright]
+pythonVersion = "3.12"
+typeCheckingMode = "standard"
