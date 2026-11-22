@@ -19,10 +19,8 @@ Load and follow the `dhrroovv-python` skill first, then apply this one. Where th
 ```
 <name>/
 ├── app/
-│   ├── __init__.py
 │   ├── main.py        # app instance and lifespan
 │   ├── core/          # infrastructure only
-│   │   ├── __init__.py
 │   │   ├── config.py  # Settings (pydantic-settings)
 │   │   ├── db.py      # engine, session factory, get_session
 │   │   └── deps.py    # shared Annotated dependencies (SessionDep)
