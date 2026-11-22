@@ -88,14 +88,14 @@ async def create_item(data: ItemCreate, session: SessionDep) -> ItemRead:
 3. Copy this skill's `assets/app/` to `./app/`.
 4. Append `assets/pyproject-fastapi.toml` to `pyproject.toml`.
 5. `uv run alembic init -t async migrations`, then in `migrations/env.py` add after `config = context.config`:
-    ```python
-    from app.core.config import settings
-    from app.models import Base
+   ```python
+   from app.core.config import settings
+   from app.models import Base
 
-    config.set_main_option("sqlalchemy.url", settings.database_url.replace("%", "%%"))
-    target_metadata = Base.metadata
-    ```
-    and remove the template's original `target_metadata = None` line.
+   config.set_main_option("sqlalchemy.url", settings.database_url.replace("%", "%%"))
+   target_metadata = Base.metadata
+   ```
+   and remove the template's original `target_metadata = None` line.
 6. Replace `.env.example`, `Dockerfile`, and `compose.yaml` with this skill's `assets/` versions (they supersede the Python skill's).
 7. Run the checks from `dhrroovv-python`, then confirm the app imports: `uv run python -c "from app.main import app"`.
 
