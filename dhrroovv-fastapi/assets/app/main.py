@@ -1,9 +1,8 @@
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
-
 from app.core.db import engine
+from fastapi import FastAPI
 
 
 @asynccontextmanager
