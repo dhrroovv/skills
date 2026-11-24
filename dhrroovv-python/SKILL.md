@@ -16,7 +16,7 @@ Existing project conventions win over these defaults. In an existing repo, follo
 
 ## Directory boundaries
 
-Organise top-level directories by what each one is for. The application package (for example `app/`) holds only code the running service imports. Anything that supports or operates on it without being part of its runtime sits beside it at the repo root: `tests/`, `migrations/`, `scripts/`, `docs/`, fixtures. Why: the application package is the unit that gets bundled and deployed, so keeping tooling outside it keeps that unit small, self-contained, and importable on its own.
+Organise top-level directories by what each one is for. The application package (for example `app/`) holds only code the running service imports. Anything that supports or operates on it without being part of its runtime sits beside it at the repo root: `tests/`, `migrations/`, `scripts/`, `docs/`, `fixtures/`. Why: the application package is the unit that gets bundled and deployed, so keeping tooling outside it keeps that unit small, self-contained, and importable on its own.
 
 When adding a new directory, ask "does the running service import this?" If yes, it goes inside the application package. If it only tests, migrates, seeds, or documents the service, it goes at the root. Apply this to any new directory, not only the ones listed above.
 
