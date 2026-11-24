@@ -81,7 +81,7 @@ async def create_item(data: ItemCreate, session: SessionDep) -> ItemRead:
 
 ## Scaffolding a new project
 
-1. Run the scaffold steps from `dhrroovv-python` (`uv init --no-package --python 3.12`, dev tools, gitignore, etc.), then delete the generated root `main.py` (and root `config.py` if present). Code lives in `app/`.
+1. Run the scaffold steps from `dhrroovv-python` (`uv init --no-package --python 3.12`, dev tools, gitignore, git identity, etc.), then delete the generated root `main.py` (and root `config.py` if present). Code lives in `app/`.
 2. `uv add "fastapi[standard]" "sqlalchemy[asyncio]" asyncpg alembic pydantic-settings`
 3. Copy this skill's `assets/app/` to `./app/`.
 4. Append `assets/pyproject-fastapi.toml` to `pyproject.toml`.

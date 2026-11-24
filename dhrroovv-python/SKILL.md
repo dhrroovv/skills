@@ -1,6 +1,6 @@
 ---
 name: dhrroovv-python
-description: Dhruv's Python conventions: default Python version and tooling (uv, ruff, pyright), coding style, Pydantic usage, error handling, and how to scaffold a new project. Use whenever creating, scaffolding, or modifying Python code or Python projects, or adding Python dependencies.
+description: Dhruv's Python conventions: default Python version and tooling (uv, ruff, pyright), coding style, Pydantic usage, error handling, and how to scaffold a new project. Use whenever creating, scaffolding, or modifying Python code or Python projects, or adding Python dependencies. When scaffolding, set the repo's git identity from the GitHub accounts on this machine, and ask which account to use when more than one is logged in.
 ---
 
 # Python conventions
@@ -74,15 +74,37 @@ settings = Settings()
 
 Not scaffolded by default. When asked to add tests, use `pytest` with `tests/` at the repo root and add `pythonpath = ["."]` under `[tool.pytest.ini_options]` so flat-layout imports work.
 
+## Git identity
+
+When scaffolding, if the directory is not already a git repo, initialise it and pin one GitHub account to that repo. Never change global git config, and never switch the active `gh` account.
+
+List the accounts on this machine with `gh auth status`. If more than one is logged in, ask which login to use. If only one is logged in, use it. If none are logged in, ask for the name and email. Do not copy the global git identity.
+
+`user.name` is the chosen login. For `user.email`, read that account without printing its token. Try `email` from `gh api user`, then the primary entry from `gh api user/emails`. Call both with `GH_TOKEN=$(gh auth token --user <login>)`. If neither returns an email, ask for it.
+
+Then, in this repo only:
+
+```bash
+git init
+git config --local user.name "<login>"
+git config --local user.email "<email>"
+git config --local --unset-all credential.https://github.com.helper || true
+git config --local --add credential.https://github.com.helper ''
+git config --local --add credential.https://github.com.helper '!f() { echo "username=<login>"; echo "password=$(gh auth token --user <login>)"; }; f'
+```
+
+The blank helper drops inherited GitHub credentials for this repo, so a later push uses the chosen login while another account stays the default `gh` user. Do not commit `.git/config`.
+
 ## Scaffolding a new project
 
 1. `uv init --no-package --python 3.12 <name>` (in an existing empty directory, omit `<name>`). The `--no-package` flag is mandatory; it keeps the flat layout.
-2. `uv add --dev ruff pyright`
-3. If the project needs config: `uv add pydantic-settings`.
-4. Append `assets/pyproject-tools.toml` to `pyproject.toml`.
-5. Replace the generated `.gitignore` with `assets/gitignore`. Copy `assets/env.example` to `.env.example`, `assets/dockerignore` to `.dockerignore`, and `assets/Dockerfile` and `assets/compose.yaml` to the project root. Adjust the command, ports, and services to fit the project.
-6. Do not create `tests/`, a Makefile, or a justfile unless asked.
-7. Run the checks above once to confirm a clean baseline.
+2. Set the git identity above.
+3. `uv add --dev ruff pyright`
+4. If the project needs config: `uv add pydantic-settings`.
+5. Append `assets/pyproject-tools.toml` to `pyproject.toml`.
+6. Replace the generated `.gitignore` with `assets/gitignore`. Copy `assets/env.example` to `.env.example`, `assets/dockerignore` to `.dockerignore`, and `assets/Dockerfile` and `assets/compose.yaml` to the project root. Adjust the command, ports, and services to fit the project.
+7. Do not create `tests/`, a Makefile, or a justfile unless asked.
+8. Run the checks above once to confirm a clean baseline.
 
 Expected result:
 
