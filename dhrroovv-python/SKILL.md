@@ -14,6 +14,14 @@ Existing project conventions win over these defaults. In an existing repo, follo
 - Layout: flat. Use `src/` only for a library meant to be published, and only when asked. Why: uv 0.12+ packages projects by default, and apps don't need a build system.
 - Lint and format: `ruff`. Type checking: `pyright`.
 
+## Directory boundaries
+
+Organise top-level directories by what each one is for. The application package (for example `app/`) holds only code the running service imports. Anything that supports or operates on it without being part of its runtime sits beside it at the repo root: `tests/`, `migrations/`, `scripts/`, `docs/`, fixtures. Why: the application package is the unit that gets bundled and deployed, so keeping tooling outside it keeps that unit small, self-contained, and importable on its own.
+
+When adding a new directory, ask "does the running service import this?" If yes, it goes inside the application package. If it only tests, migrates, seeds, or documents the service, it goes at the root. Apply this to any new directory, not only the ones listed above.
+
+This is about where code lives, not what ends up in the image: the Dockerfile may still copy `migrations/` so they can run from the built image. Application code never imports from root-level tooling directories; tooling may import the application.
+
 ## Before finishing any task
 
 ```bash
