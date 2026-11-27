@@ -1,6 +1,6 @@
 ---
 name: dhrroovv-lld
-description: Dhruv's low-level design and OOP rules for Python: when to use classes vs functions, how to split responsibilities, composition over inheritance, Protocols and dependency injection, which design patterns are approved (with their Python forms), and how to write a short LLD before coding. Use when designing or structuring classes and modules, choosing a design pattern, writing an LLD, or refactoring code structure. Builds on dhrroovv-python.
+description: "Dhruv's low-level design and OOP rules for Python: when to use classes vs functions, how to split responsibilities, composition over inheritance, Protocols and dependency injection, which design patterns are approved (with their Python forms), and how to write a short LLD before coding. Use when designing or structuring classes and modules, choosing a design pattern, writing an LLD, or refactoring code structure. Builds on dhrroovv-python."
 ---
 
 # Low-level design

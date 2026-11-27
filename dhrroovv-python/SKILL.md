@@ -1,6 +1,6 @@
 ---
 name: dhrroovv-python
-description: Dhruv's Python conventions: default Python version and tooling (uv, ruff, pyright), coding style, Pydantic usage, error handling, and how to scaffold a new project. Use whenever creating, scaffolding, or modifying Python code or Python projects, or adding Python dependencies. When scaffolding, set the repo's git identity from the GitHub accounts on this machine, and ask which account to use when more than one is logged in.
+description: "Dhruv's Python conventions: default Python version and tooling (uv, ruff, pyright), coding style, Pydantic usage, error handling, and how to scaffold a new project. Use whenever creating, scaffolding, or modifying Python code or Python projects, or adding Python dependencies. When scaffolding, set the repo's git identity from the GitHub accounts on this machine, and ask which account to use when more than one is logged in."
 ---
 
 # Python conventions

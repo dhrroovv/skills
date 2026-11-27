@@ -1,6 +1,6 @@
 ---
 name: dhrroovv-fastapi
-description: Dhruv's defaults for scaffolding and structuring a FastAPI backend: stack, project structure, how routes and services are written, starter files, Docker/compose setup, and run commands. Use when creating or initialising a FastAPI project or adding routes and services to one. Builds on dhrroovv-python.
+description: "Dhruv's defaults for scaffolding and structuring a FastAPI backend: stack, project structure, how routes and services are written, starter files, Docker/compose setup, and run commands. Use when creating or initialising a FastAPI project or adding routes and services to one. Builds on dhrroovv-python."
 ---
 
 # FastAPI conventions
